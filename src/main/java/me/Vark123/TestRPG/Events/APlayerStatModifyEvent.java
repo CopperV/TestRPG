@@ -1,4 +1,4 @@
-package me.Vark123.TestRPG.Events.Custom;
+package me.Vark123.TestRPG.Events;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -13,7 +13,7 @@ import me.Vark123.TestRPG.Players.RpgPlayer;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public abstract class PlayerStatModifyEvent extends Event implements Cancellable {
+public abstract class APlayerStatModifyEvent extends Event implements Cancellable {
 	
 	boolean cancelled;
 	private static final HandlerList handlers = new HandlerList();
@@ -24,11 +24,11 @@ public abstract class PlayerStatModifyEvent extends Event implements Cancellable
 	@Setter(value = AccessLevel.NONE)
 	private PlayerStatModifyType modType;
 	
-	public PlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType) {
+	public APlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType) {
 		this(player, value, modType, false);
 	}
 	
-	public PlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType, boolean async) {
+	public APlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType, boolean async) {
 		super(async);
 		this.player = player;
 		this.value = value;

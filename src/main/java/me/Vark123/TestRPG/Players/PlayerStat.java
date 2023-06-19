@@ -17,7 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import lombok.Getter;
-import me.Vark123.TestRPG.Events.Custom.PlayerStatModifyEvent;
+import me.Vark123.TestRPG.Events.APlayerStatModifyEvent;
 
 @Getter
 @Entity
@@ -39,13 +39,13 @@ public abstract class PlayerStat {
 	@Transient
 	protected double calculatedValue;
 	
-	protected abstract Class<? extends PlayerStatModifyEvent> getEventClass();
+	protected abstract Class<? extends APlayerStatModifyEvent> getEventClass();
 	
 	public void modifyValue(double value, PlayerStatModifyType type){
-		PlayerStatModifyEvent event = null;
+		APlayerStatModifyEvent event = null;
 		try {
 			Constructor<?> constructor = getEventClass().getConstructor(RpgPlayer.class, double.class, PlayerStatModifyType.class);
-			event = (PlayerStatModifyEvent) constructor.newInstance(player, value, type);
+			event = (APlayerStatModifyEvent) constructor.newInstance(player, value, type);
 		} catch (NoSuchMethodException | SecurityException | InstantiationException 
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			// TODO Auto-generated catch block

@@ -4,8 +4,8 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Transient;
 import lombok.Getter;
-import me.Vark123.TestRPG.Events.Custom.PlayerStatModifyEvent;
-import me.Vark123.TestRPG.Events.Custom.Impl.PlayerLevelModifyEvent;
+import me.Vark123.TestRPG.Events.APlayerStatModifyEvent;
+import me.Vark123.TestRPG.Events.Impl.PlayerLevelModifyEvent;
 import me.Vark123.TestRPG.Players.PlayerStat;
 
 @Getter
@@ -14,10 +14,10 @@ import me.Vark123.TestRPG.Players.PlayerStat;
 public class LevelStat extends PlayerStat {
 
 	@Transient
-	private static final Class<? extends PlayerStatModifyEvent> eventClass = PlayerLevelModifyEvent.class;
+	private static final Class<? extends APlayerStatModifyEvent> eventClass = PlayerLevelModifyEvent.class;
 
 	@Override
-	protected Class<? extends PlayerStatModifyEvent> getEventClass() {
+	protected Class<? extends APlayerStatModifyEvent> getEventClass() {
 		return eventClass;
 	}
 	
