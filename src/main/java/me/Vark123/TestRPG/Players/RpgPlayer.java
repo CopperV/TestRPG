@@ -17,7 +17,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import me.Vark123.TestRPG.Players.Classes.NoClass;
@@ -25,10 +24,13 @@ import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 
 @Getter
 @Entity
-@Table
 @NamedQuery(
 		name = "RpgPlayer.getByUUID", 
 		query = "Select RPG From RpgPlayer RPG WHERE RPG.uid = :uid"
+)
+@NamedQuery(
+		name = "RpgPlayer.getOptionalByName", 
+		query = "Select RPG From RpgPlayer RPG WHERE RPG.lastName LIKE ':nick'"
 )
 @NamedQuery(
 		name = "RpgPlayer.getAll", 

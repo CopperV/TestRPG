@@ -1,6 +1,7 @@
 package me.Vark123.TestRPG.Repositories.Impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.hibernate.Session;
@@ -81,11 +82,12 @@ public class TestPlayerRepository implements APlayerRepository {
 		query.setParameter("uid", uid);
 		RpgPlayer rpg = null;
 		try {
-			rpg = query.getSingleResult();
+			rpg = query.getSingleResultOrNull();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			session.close();
 		}
-		session.close();
 		return rpg;
 	}
 
@@ -96,6 +98,25 @@ public class TestPlayerRepository implements APlayerRepository {
 		List<RpgPlayer> list = query.getResultList();
 		session.close();
 		return list;
+	}
+
+	@Override
+	public Optional<RpgPlayer> getPlayerByName(String nick) {
+		Session session = TestRPGApi.get().getSessionFactory().openSession();
+		Query<RpgPlayer> query = session
+				.createNamedQuery("RpgPlayer.getOptionalByName", RpgPlayer.class);
+		query.setParameter("nick", nick);
+		RpgPlayer rpg = null;
+		try {
+			rpg = query.getSingleResultOrNull();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		if(rpg == null)
+			return Optional.empty();
+		return Optional.of(rpg);
 	}
 
 }

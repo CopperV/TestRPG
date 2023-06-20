@@ -5,6 +5,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.rysefoxx.inventory.plugin.pagination.InventoryManager;
 import lombok.Getter;
 import me.Vark123.TestRPG.API.TestRPGApi;
+import me.Vark123.TestRPG.Players.PlayerClass;
+import me.Vark123.TestRPG.Players.PlayerStat;
+import me.Vark123.TestRPG.Players.RpgPlayer;
+import me.Vark123.TestRPG.Players.Classes.DefaultClass;
+import me.Vark123.TestRPG.Players.Classes.NoClass;
+import me.Vark123.TestRPG.Players.Classes.VipClass;
+import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 
 @Getter
 public class TestRPG extends JavaPlugin {
@@ -16,7 +23,15 @@ public class TestRPG extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		instance = this;
-
+		
+		TestRPGApi.get().registerHibernateClass(RpgPlayer.class);
+		TestRPGApi.get().registerHibernateClass(PlayerClass.class);
+		TestRPGApi.get().registerHibernateClass(PlayerStat.class);
+		TestRPGApi.get().registerHibernateClass(NoClass.class);
+		TestRPGApi.get().registerRpgClass(DefaultClass.class);
+		TestRPGApi.get().registerRpgClass(VipClass.class);
+		TestRPGApi.get().registerRpgStat(LevelStat.class);
+		
 		super.onLoad();
 	}
 
@@ -29,10 +44,6 @@ public class TestRPG extends JavaPlugin {
 
 		manager = new InventoryManager(instance);
 		manager.invoke();
-
-		// Wywolywana jest metoda get, by uruchomic konstruktor API i zainicjowac
-		// SessionFactory
-		TestRPGApi.get();
 
 		super.onEnable();
 	}

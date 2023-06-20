@@ -11,7 +11,7 @@ import lombok.Getter;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 
 @Getter
-public class PlayerContainer {
+public final class PlayerContainer {
 
 	private static final PlayerContainer inst = new PlayerContainer();
 
