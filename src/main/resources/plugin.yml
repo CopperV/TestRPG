@@ -2,7 +2,6 @@ name: TestRPG
 version: 0.0.1
 main: me.Vark123.TestRPG.TestRPG
 author: Vark123
-depend: [Citizens]
 api-version: 1.18
 
 libraries:

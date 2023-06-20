@@ -14,20 +14,20 @@ import me.Vark123.TestRPG.Players.RpgPlayer;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public abstract class APlayerStatModifyEvent extends Event implements Cancellable {
-	
+
 	boolean cancelled;
 	private static final HandlerList handlers = new HandlerList();
-	
+
 	@Setter(value = AccessLevel.NONE)
 	private RpgPlayer player;
 	private double value;
 	@Setter(value = AccessLevel.NONE)
 	private PlayerStatModifyType modType;
-	
+
 	public APlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType) {
 		this(player, value, modType, false);
 	}
-	
+
 	public APlayerStatModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType, boolean async) {
 		super(async);
 		this.player = player;
@@ -39,11 +39,9 @@ public abstract class APlayerStatModifyEvent extends Event implements Cancellabl
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-	
+
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
-	
-	
 
 }

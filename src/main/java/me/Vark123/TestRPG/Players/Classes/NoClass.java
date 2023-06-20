@@ -8,11 +8,11 @@ import me.Vark123.TestRPG.Players.RpgPlayer;
 
 @Getter
 @Entity
-@DiscriminatorValue(value = "VIP")
-public class VipClass extends PlayerClass {
+@DiscriminatorValue(value = "NONE")
+public class NoClass extends PlayerClass {
 
-	public VipClass() {}
-	public VipClass(RpgPlayer rpg) {
+	public NoClass() {}
+	public NoClass(RpgPlayer rpg) {
 		super(rpg);
 	}
 

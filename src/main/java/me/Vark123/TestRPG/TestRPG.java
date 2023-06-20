@@ -12,27 +12,28 @@ public class TestRPG extends JavaPlugin {
 	private static TestRPG instance;
 
 	private InventoryManager manager;
-	
+
 	@Override
 	public void onLoad() {
 		instance = this;
-		
-		FileSystem.init();
-		CommandExecutors.setExecutors();
-		ListenerManager.registerListeners();
-		
-		manager = new InventoryManager(instance);
-		manager.invoke();
-		
-		//Wywolywana jest metoda get, by uruchomic konstruktor API i zainicjowac SessionFactory
-		TestRPGApi.get();
-		
+
 		super.onLoad();
 	}
 
 	@Override
 	public void onEnable() {
-		
+		FileSystem.init();
+
+		CommandExecutors.setExecutors();
+		ListenerManager.registerListeners();
+
+		manager = new InventoryManager(instance);
+		manager.invoke();
+
+		// Wywolywana jest metoda get, by uruchomic konstruktor API i zainicjowac
+		// SessionFactory
+		TestRPGApi.get();
+
 		super.onEnable();
 	}
 

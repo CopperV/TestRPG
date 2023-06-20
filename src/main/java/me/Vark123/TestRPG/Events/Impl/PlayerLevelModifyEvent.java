@@ -9,6 +9,7 @@ public class PlayerLevelModifyEvent extends APlayerStatModifyEvent {
 	public PlayerLevelModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType) {
 		super(player, value, modType);
 	}
+
 	public PlayerLevelModifyEvent(RpgPlayer player, double value, PlayerStatModifyType modType, boolean async) {
 		super(player, value, modType, async);
 	}

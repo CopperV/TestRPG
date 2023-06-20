@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 
@@ -21,9 +20,13 @@ public abstract class PlayerClass {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@OneToOne
-	@JoinColumn(name = "player_id")
+
+	@OneToOne(optional = false)
 	private RpgPlayer player;
 	
+	public PlayerClass() {}
+	public PlayerClass(RpgPlayer rpg) {
+		this.player = rpg;
+	}
+
 }
