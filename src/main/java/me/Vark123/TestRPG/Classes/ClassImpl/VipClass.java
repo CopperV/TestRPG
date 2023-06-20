@@ -1,9 +1,9 @@
-package me.Vark123.TestRPG.Players.Classes;
+package me.Vark123.TestRPG.Classes.ClassImpl;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
-import me.Vark123.TestRPG.Players.PlayerClass;
+import me.Vark123.TestRPG.Classes.PlayerClass;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 
 @Getter

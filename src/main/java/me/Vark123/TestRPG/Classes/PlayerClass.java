@@ -1,4 +1,4 @@
-package me.Vark123.TestRPG.Players;
+package me.Vark123.TestRPG.Classes;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -10,6 +10,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
+import me.Vark123.TestRPG.Players.RpgPlayer;
 
 @Getter
 @Entity

@@ -19,7 +19,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
-import me.Vark123.TestRPG.Players.Classes.NoClass;
+import me.Vark123.TestRPG.Classes.PlayerClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 
 @Getter

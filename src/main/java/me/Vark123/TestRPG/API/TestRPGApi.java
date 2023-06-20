@@ -2,6 +2,7 @@ package me.Vark123.TestRPG.API;
 
 import java.util.Properties;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,15 +12,15 @@ import lombok.Getter;
 import me.Vark123.TestRPG.FileSystem;
 import me.Vark123.TestRPG.TestRPG;
 import me.Vark123.TestRPG.TestRPGConst;
+import me.Vark123.TestRPG.Classes.PlayerClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.DefaultClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.VipClass;
 import me.Vark123.TestRPG.Containers.HibernateClassContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer;
 import me.Vark123.TestRPG.Containers.RpgStatContainer;
-import me.Vark123.TestRPG.Players.PlayerClass;
 import me.Vark123.TestRPG.Players.PlayerStat;
 import me.Vark123.TestRPG.Players.RpgPlayer;
-import me.Vark123.TestRPG.Players.Classes.DefaultClass;
-import me.Vark123.TestRPG.Players.Classes.NoClass;
-import me.Vark123.TestRPG.Players.Classes.VipClass;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 import me.Vark123.TestRPG.Repositories.APlayerRepository;
 import me.Vark123.TestRPG.Repositories.Impl.TestPlayerRepository;
@@ -57,7 +58,13 @@ public final class TestRPGApi {
 	}
 	
 	public void registerRpgClass(Class<? extends PlayerClass> rpgClass) {
-		RpgClassContainer.get().getRpgClasses().add(rpgClass);
+		RpgClassContainer.get().storeClass(rpgClass);
+		registerHibernateClass(rpgClass);
+	}
+	
+	public void registerRpgClass(Class<? extends PlayerClass> rpgClass,
+			ConfigurationSection rpgClassConfig) {
+		RpgClassContainer.get().storeClass(rpgClass, rpgClassConfig);
 		registerHibernateClass(rpgClass);
 	}
 	

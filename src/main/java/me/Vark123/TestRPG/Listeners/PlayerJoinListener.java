@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.Vark123.TestRPG.API.TestRPGApi;
 import me.Vark123.TestRPG.Containers.PlayerContainer;
+import me.Vark123.TestRPG.GUI.Misc.ChooseClassInvManager;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 
 public class PlayerJoinListener implements Listener {
@@ -20,6 +21,16 @@ public class PlayerJoinListener implements Listener {
 			TestRPGApi.get().getPlayerRepository().create(rpg);
 		}
 		PlayerContainer.get().storePlayer(p, rpg);
+		
+		switch(rpg.getState()) {
+			case START:
+				ChooseClassInvManager.get().openMenu(p);
+				break;
+			case TUTORIAL:
+				break;
+			case GAME:
+				break;
+		}
 	}
 
 }

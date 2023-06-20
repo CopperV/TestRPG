@@ -5,12 +5,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.rysefoxx.inventory.plugin.pagination.InventoryManager;
 import lombok.Getter;
 import me.Vark123.TestRPG.API.TestRPGApi;
-import me.Vark123.TestRPG.Players.PlayerClass;
+import me.Vark123.TestRPG.Classes.PlayerClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.DefaultClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
+import me.Vark123.TestRPG.Classes.ClassImpl.VipClass;
 import me.Vark123.TestRPG.Players.PlayerStat;
 import me.Vark123.TestRPG.Players.RpgPlayer;
-import me.Vark123.TestRPG.Players.Classes.DefaultClass;
-import me.Vark123.TestRPG.Players.Classes.NoClass;
-import me.Vark123.TestRPG.Players.Classes.VipClass;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 
 @Getter
