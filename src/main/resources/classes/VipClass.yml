@@ -5,3 +5,11 @@ chooseitem:
     - "&aPrzykladowa klasa vipowska,"
     - "&aktora bedziesz mogl wybrac"
     - "&ajesli spelnisz wymagania"
+startlocation:
+  world: "world"
+  location:
+    x: -20.5
+    y: 74
+    z: -100.5
+    pitch: 0
+    yaw: 180

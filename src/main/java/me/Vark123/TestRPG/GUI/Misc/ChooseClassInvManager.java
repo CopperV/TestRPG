@@ -121,12 +121,15 @@ public final class ChooseClassInvManager {
 			if(oInventory.isEmpty())
 				return;
 			RyseInventory ryseInventory = oInventory.get();
+			ryseInventory.allowClose();
+			ryseInventory.close(p);
 			
 			rpgPlayer.setState(PlayerState.TUTORIAL);
 			rpgPlayer.setPlayerClass(rpgClass);
-			
-			ryseInventory.allowClose();
-			ryseInventory.close(p);
+			Optional<RpgClassConfig> oConfig = RpgClassContainer.get().getRpgClassConfig(rpgClass.getClass());
+			oConfig.ifPresent(config -> {
+				p.teleport(config.getStartLocation());
+			});
 		};
 		EventCreator<InventoryClickEvent> creator = new EventCreator<>(InventoryClickEvent.class, event);
 		return creator;
