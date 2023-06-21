@@ -1,6 +1,6 @@
-mysql:
-  host: "localhost"
-  port: 3306
-  database: "database"
-  username: "root"
-  password: "root"
+chooseitem:
+  material: GRASS_BLOCK
+  display: "&7&lKasa domyslna"
+  lore:
+    - "&aPrzykladowa klasa"
+    - "&az przykladowym opisem"

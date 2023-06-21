@@ -15,5 +15,8 @@ public class VipClass extends PlayerClass {
 	public VipClass(RpgPlayer rpg) {
 		super(rpg);
 	}
+	public VipClass(PlayerClass oldClass) {
+		super(oldClass);
+	}
 
 }

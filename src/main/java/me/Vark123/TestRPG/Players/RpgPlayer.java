@@ -12,6 +12,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,13 +50,15 @@ public class RpgPlayer {
 	@Setter
 	private String lastName;
 
+	@Setter
 	@Enumerated(EnumType.STRING)
 	private PlayerState state;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player", orphanRemoval = true)
 	private List<PlayerStat> stats;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@Setter
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "player", orphanRemoval = true, fetch=FetchType.LAZY)
 	private PlayerClass playerClass;
 
 	public RpgPlayer(Player p) {

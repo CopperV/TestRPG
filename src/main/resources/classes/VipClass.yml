@@ -1,6 +1,7 @@
-mysql:
-  host: "localhost"
-  port: 3306
-  database: "database"
-  username: "root"
-  password: "root"
+chooseitem:
+  material: GOLD_BLOCK
+  display: "&6&lKasa VIP"
+  lore:
+    - "&aPrzykladowa klasa vipowska,"
+    - "&aktora bedziesz mogl wybrac"
+    - "&ajesli spelnisz wymagania"

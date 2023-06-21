@@ -13,15 +13,10 @@ import me.Vark123.TestRPG.FileSystem;
 import me.Vark123.TestRPG.TestRPG;
 import me.Vark123.TestRPG.TestRPGConst;
 import me.Vark123.TestRPG.Classes.PlayerClass;
-import me.Vark123.TestRPG.Classes.ClassImpl.DefaultClass;
-import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
-import me.Vark123.TestRPG.Classes.ClassImpl.VipClass;
 import me.Vark123.TestRPG.Containers.HibernateClassContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer;
 import me.Vark123.TestRPG.Containers.RpgStatContainer;
 import me.Vark123.TestRPG.Players.PlayerStat;
-import me.Vark123.TestRPG.Players.RpgPlayer;
-import me.Vark123.TestRPG.Players.Statistics.LevelStat;
 import me.Vark123.TestRPG.Repositories.APlayerRepository;
 import me.Vark123.TestRPG.Repositories.Impl.TestPlayerRepository;
 
@@ -38,14 +33,6 @@ public final class TestRPGApi {
 	private TestRPGApi() {
 
 		playerRepository = new TestPlayerRepository();
-		
-		registerHibernateClass(RpgPlayer.class);
-		registerHibernateClass(PlayerClass.class);
-		registerHibernateClass(PlayerStat.class);
-		registerHibernateClass(NoClass.class);
-		registerRpgClass(DefaultClass.class);
-		registerRpgClass(VipClass.class);
-		registerRpgStat(LevelStat.class);
 	}
 
 	public static final TestRPGApi get() {

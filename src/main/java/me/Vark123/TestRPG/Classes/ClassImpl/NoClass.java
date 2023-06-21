@@ -15,5 +15,8 @@ public class NoClass extends PlayerClass {
 	public NoClass(RpgPlayer rpg) {
 		super(rpg);
 	}
+	public NoClass(PlayerClass oldClass) {
+		super(oldClass);
+	}
 
 }

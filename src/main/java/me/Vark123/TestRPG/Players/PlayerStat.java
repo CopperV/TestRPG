@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import lombok.Getter;
@@ -28,7 +29,8 @@ public abstract class PlayerStat {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
+	@JoinColumn(name = "player_id")
 	protected RpgPlayer player;
 
 	protected double baseValue;

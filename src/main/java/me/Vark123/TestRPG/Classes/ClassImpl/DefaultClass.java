@@ -15,5 +15,8 @@ public class DefaultClass extends PlayerClass {
 	public DefaultClass(RpgPlayer rpg) {
 		super(rpg);
 	}
+	public DefaultClass(PlayerClass oldClass) {
+		super(oldClass);
+	}
 	
 }

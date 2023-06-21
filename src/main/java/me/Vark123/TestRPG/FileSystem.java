@@ -22,6 +22,8 @@ public class FileSystem {
 		TestRPG.inst().saveResource(config.getName(), false);
 				
 		TestRPG.inst().saveResource("classes/", false);
+		TestRPG.inst().saveResource("classes/DefaultClass.yml", false);
+		TestRPG.inst().saveResource("classes/VipClass.yml", false);
 	}
 
 	public static YamlConfiguration getConfigYaml() {
