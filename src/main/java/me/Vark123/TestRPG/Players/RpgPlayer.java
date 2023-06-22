@@ -23,6 +23,7 @@ import lombok.Setter;
 import me.Vark123.TestRPG.Classes.PlayerClass;
 import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
+import me.Vark123.TestRPG.Players.Statistics.PnStat;
 
 @Getter
 @Entity
@@ -68,6 +69,7 @@ public class RpgPlayer {
 
 		this.stats = new ArrayList<>();
 		this.stats.add(new LevelStat(this));
+		this.stats.add(new PnStat(this));
 
 		this.playerClass = new NoClass(this);
 	}

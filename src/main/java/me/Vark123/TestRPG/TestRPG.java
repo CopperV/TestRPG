@@ -12,6 +12,7 @@ import me.Vark123.TestRPG.Classes.ClassImpl.VipClass;
 import me.Vark123.TestRPG.Players.PlayerStat;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
+import me.Vark123.TestRPG.Players.Statistics.PnStat;
 
 @Getter
 public class TestRPG extends JavaPlugin {
@@ -19,6 +20,7 @@ public class TestRPG extends JavaPlugin {
 	private static TestRPG instance;
 
 	private InventoryManager manager;
+	private String prefix;
 
 	@Override
 	public void onLoad() {
@@ -31,6 +33,7 @@ public class TestRPG extends JavaPlugin {
 		TestRPGApi.get().registerRpgClass(DefaultClass.class);
 		TestRPGApi.get().registerRpgClass(VipClass.class);
 		TestRPGApi.get().registerRpgStat(LevelStat.class);
+		TestRPGApi.get().registerRpgStat(PnStat.class);
 		
 		super.onLoad();
 	}
@@ -44,6 +47,8 @@ public class TestRPG extends JavaPlugin {
 
 		manager = new InventoryManager(instance);
 		manager.invoke();
+		
+		prefix = "§7[§e§lTestRPG§7]";
 
 		super.onEnable();
 	}
