@@ -12,3 +12,22 @@ startlocation:
     z: 14.5
     pitch: 0
     yaw: 90
+startitems:
+  1:
+    material: IRON_SWORD
+    display: "&7Domyslny mieczyk"
+    lore:
+      - "&aLore mieczyka"
+      - "&adla podstawowej klasy"
+    enchantments:
+      - DAMAGE_ALL:2
+      - DURABILITY:10
+  2:
+    material: LEATHER_CHESTPLATE
+    display: "&7Domyslna zbrojka"
+    lore:
+      - "&aLore armora"
+      - "&adla podstawowej klasy"
+    enchantments:
+      - PROTECTION_ENVIRONMENTAL:2
+      - DURABILITY:10

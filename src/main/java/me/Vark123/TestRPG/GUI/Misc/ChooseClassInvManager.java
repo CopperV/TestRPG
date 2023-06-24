@@ -27,6 +27,7 @@ import me.Vark123.TestRPG.Containers.RpgClassContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer.RpgClassConfig;
 import me.Vark123.TestRPG.Players.PlayerState;
 import me.Vark123.TestRPG.Players.RpgPlayer;
+import me.Vark123.TestRPG.Utils.ItemStackUtils;
 
 @Getter
 public final class ChooseClassInvManager {
@@ -129,6 +130,10 @@ public final class ChooseClassInvManager {
 			Optional<RpgClassConfig> oConfig = RpgClassContainer.get().getRpgClassConfig(rpgClass.getClass());
 			oConfig.ifPresent(config -> {
 				p.teleport(config.getStartLocation());
+				p.getInventory().clear();
+				config.getStartItems().forEach(startItem -> {
+					ItemStackUtils.giveOrDropItem(startItem, p);
+				});
 			});
 		};
 		EventCreator<InventoryClickEvent> creator = new EventCreator<>(InventoryClickEvent.class, event);

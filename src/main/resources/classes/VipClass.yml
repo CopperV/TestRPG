@@ -13,3 +13,22 @@ startlocation:
     z: -100.5
     pitch: 0
     yaw: 180
+startitems:
+  1:
+    material: DIAMOND_SWORD
+    display: "&bDiamentowy mieczyk"
+    lore:
+      - "&aLore mieczyka"
+      - "&adla klasy VIP"
+    enchantments:
+      - DAMAGE_ALL:3
+      - DURABILITY:13
+  2:
+    material: IRON_CHESTPLATE
+    display: "&eZbrojka VIPowska"
+    lore:
+      - "&aLore armora"
+      - "&adla klasy VIP"
+    enchantments:
+      - PROTECTION_ENVIRONMENTAL:3
+      - DURABILITY:13

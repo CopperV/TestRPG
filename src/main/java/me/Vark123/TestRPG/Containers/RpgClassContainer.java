@@ -95,6 +95,15 @@ public final class RpgClassContainer {
 			z = rpgClassConfig.getDouble("startlocation.location.z");
 			pitch = (float) rpgClassConfig.getDouble("startlocation.location.pitch", 0);
 			yaw = (float) rpgClassConfig.getDouble("startlocation.location.yaw", 0);
+			
+			startItems = new HashSet<>();
+			if(rpgClassConfig.contains("startitems")) {
+				ConfigurationSection itemSection = rpgClassConfig.getConfigurationSection("startitems");
+				itemSection.getKeys(false).stream().forEach(key -> {
+					ItemStack it = ItemStackUtils.generateItem(itemSection.getConfigurationSection(key));
+					startItems.add(it);
+				});
+			}
 		}
 		
 		public Location getStartLocation() {

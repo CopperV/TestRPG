@@ -1,12 +1,18 @@
 package me.Vark123.TestRPG.Utils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.mutable.MutableBoolean;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -33,6 +39,51 @@ public class ItemStackUtils {
 		im.setDisplayName(display);
 		im.setLore(lore);
 		it.setItemMeta(im);
+		
+		if(section.contains("enchantments")) {
+			List<String> enchantList = section.getStringList("enchantments");
+			enchantList.stream().filter(enchant -> {
+				if(!enchant.contains(":"))
+					return false;
+				String[] split = enchant.split(":");
+				if(!StringUtils.isNumeric(split[1]))
+					return false;
+				
+				MutableBoolean check = new MutableBoolean();
+				Field[] fields = Enchantment.class.getFields();
+				
+				Arrays.stream(fields).filter(field -> {
+					if(!Modifier.isStatic(field.getModifiers()))
+						return false;
+					if(!field.getName().equals(split[0].toUpperCase()))
+						return false;
+					try {
+						if(!(field.get(null) instanceof Enchantment))
+							return false;
+					} catch (IllegalArgumentException | IllegalAccessException e) {
+						e.printStackTrace();
+						return false;
+					}
+					return true;
+				}).findAny().ifPresent(field -> {
+					check.setValue(true);
+				});
+				
+				return check.booleanValue();
+			}).forEach(enchant -> {
+				String[] split = enchant.split(":");
+				int level = Integer.parseInt(split[1]);
+				
+				Field field;
+				try {
+					field = Enchantment.class.getField(split[0].toUpperCase());
+					Enchantment ench = (Enchantment) field.get(null);
+					it.addUnsafeEnchantment(ench, level);
+				} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			});
+		}
 		
 		if(section.contains("nbt")) {
 			NBTItem nbt = new NBTItem(it);
