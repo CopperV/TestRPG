@@ -35,5 +35,7 @@ public abstract class PlayerClass {
 		this.id = oldClass.id;
 		this.player = oldClass.player;
 	}
+	
+	public abstract String getClassIdentifier();
 
 }

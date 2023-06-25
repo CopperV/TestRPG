@@ -9,6 +9,9 @@ import me.Vark123.TestRPG.Classes.PlayerClass;
 import me.Vark123.TestRPG.Classes.ClassImpl.DefaultClass;
 import me.Vark123.TestRPG.Classes.ClassImpl.NoClass;
 import me.Vark123.TestRPG.Classes.ClassImpl.VipClass;
+import me.Vark123.TestRPG.Containers.NPCContainer;
+import me.Vark123.TestRPG.NPC.Class.Tutorial.NPCs.DefaultClassNPC;
+import me.Vark123.TestRPG.NPC.Class.Tutorial.NPCs.VipClassNPC;
 import me.Vark123.TestRPG.Players.PlayerStat;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 import me.Vark123.TestRPG.Players.Statistics.LevelStat;
@@ -49,13 +52,20 @@ public class TestRPG extends JavaPlugin {
 		manager.invoke();
 		
 		prefix = "§7[§e§lTestRPG§7]";
+		
+		NPCContainer.get().registerNPC(new DefaultClassNPC());
+		NPCContainer.get().registerNPC(new VipClassNPC());
 
 		super.onEnable();
 	}
 
 	@Override
 	public void onDisable() {
-		// TODO Auto-generated method stub
+		
+		NPCContainer.get().getNpcRegistry().values().forEach(npc -> {
+			npc.getNpc().destroy();
+		});
+		
 		super.onDisable();
 	}
 

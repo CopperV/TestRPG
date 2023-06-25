@@ -2,7 +2,6 @@ package me.Vark123.TestRPG.Listeners;
 
 import java.util.Optional;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,10 +9,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.Vark123.TestRPG.API.TestRPGApi;
+import me.Vark123.TestRPG.Containers.NPCContainer;
 import me.Vark123.TestRPG.Containers.PlayerContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer.RpgClassConfig;
 import me.Vark123.TestRPG.GUI.Misc.ChooseClassInvManager;
+import me.Vark123.TestRPG.NPC.ARpgNpc;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 
 public class PlayerJoinListener implements Listener {
@@ -37,8 +38,13 @@ public class PlayerJoinListener implements Listener {
 						.getRpgClassConfig(rpg.getPlayerClass().getClass());
 				oClassConfig.ifPresent(classConfig -> {
 					Location loc = classConfig.getStartLocation();
-					Bukkit.broadcastMessage(loc.toString());
 					p.teleport(loc);
+				});
+				
+				Optional<ARpgNpc> oNpc = NPCContainer.get().getNpc(rpg.getPlayerClass().getClassIdentifier());
+				final RpgPlayer copyRpg = rpg;
+				oNpc.ifPresent(npc -> {
+					npc.addBehavior(copyRpg, 0);
 				});
 				break;
 			case GAME:

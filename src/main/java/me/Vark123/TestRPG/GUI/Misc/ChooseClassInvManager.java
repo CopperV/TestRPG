@@ -22,9 +22,11 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import me.Vark123.TestRPG.TestRPG;
 import me.Vark123.TestRPG.Classes.PlayerClass;
+import me.Vark123.TestRPG.Containers.NPCContainer;
 import me.Vark123.TestRPG.Containers.PlayerContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer;
 import me.Vark123.TestRPG.Containers.RpgClassContainer.RpgClassConfig;
+import me.Vark123.TestRPG.NPC.ARpgNpc;
 import me.Vark123.TestRPG.Players.PlayerState;
 import me.Vark123.TestRPG.Players.RpgPlayer;
 import me.Vark123.TestRPG.Utils.ItemStackUtils;
@@ -134,6 +136,11 @@ public final class ChooseClassInvManager {
 				config.getStartItems().forEach(startItem -> {
 					ItemStackUtils.giveOrDropItem(startItem, p);
 				});
+			});
+			
+			Optional<ARpgNpc> oNpc = NPCContainer.get().getNpc(rpgPlayer.getPlayerClass().getClassIdentifier());
+			oNpc.ifPresent(npc -> {
+				npc.addBehavior(rpgPlayer, 0);
 			});
 		};
 		EventCreator<InventoryClickEvent> creator = new EventCreator<>(InventoryClickEvent.class, event);

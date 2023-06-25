@@ -19,4 +19,9 @@ public class DefaultClass extends PlayerClass {
 		super(oldClass);
 	}
 	
+	@Override
+	public String getClassIdentifier() {
+		return "DEFAULT";
+	}
+	
 }

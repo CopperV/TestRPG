@@ -18,5 +18,10 @@ public class VipClass extends PlayerClass {
 	public VipClass(PlayerClass oldClass) {
 		super(oldClass);
 	}
+	
+	@Override
+	public String getClassIdentifier() {
+		return "VIP";
+	}
 
 }

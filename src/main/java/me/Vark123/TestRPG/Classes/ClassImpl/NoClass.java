@@ -18,5 +18,10 @@ public class NoClass extends PlayerClass {
 	public NoClass(PlayerClass oldClass) {
 		super(oldClass);
 	}
+	
+	@Override
+	public String getClassIdentifier() {
+		return "NONE";
+	}
 
 }
